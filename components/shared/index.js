@@ -1,5 +1,3 @@
-"use client";
-
 import Footer from "./Footer";
 import Leftbar from "./Leftbar";
 import Navbar from "./Navbar";

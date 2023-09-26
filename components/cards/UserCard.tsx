@@ -5,7 +5,6 @@ import { Button } from "../ui";
 import { useRouter } from "next/navigation";
 
 interface Props {
-  key: string;
   id: string;
   name: string;
   username: string;
@@ -13,7 +12,7 @@ interface Props {
   personType: string;
 }
 
-const UserCard = ({ key, id, name, username, imgUrl, personType }: Props) => {
+const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
   const router = useRouter();
   return (
     <article className="user-card">
@@ -24,7 +23,14 @@ const UserCard = ({ key, id, name, username, imgUrl, personType }: Props) => {
           <p className="text-small-medium text-gray-1">@{username}</p>
         </div>
       </div>
-      <Button className="user-card_btn" onClick={() => router.push(`/profile/${id}`)}>
+      <Button
+        className="user-card_btn"
+        onClick={() =>
+          personType === "Community"
+            ? router.push(`/communities/${id}`)
+            : router.push(`/profile/${id}`)
+        }
+      >
         View
       </Button>
     </article>
